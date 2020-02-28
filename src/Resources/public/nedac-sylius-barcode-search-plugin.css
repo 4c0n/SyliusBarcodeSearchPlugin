@@ -1,0 +1,9 @@
+.nedac-sylius-barcode-plugin-viewport-container {
+    text-align: center;
+}
+
+#nedac-sylius-barcode-plugin-interactive {
+    width: 640px;
+    height: 480px;
+    display: inline-flex
+}

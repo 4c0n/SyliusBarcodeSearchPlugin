@@ -1,0 +1,58 @@
+version: '3.4'
+
+services:
+  php:
+    build:
+      context: .
+      target: sylius_barcode_search_plugin_php
+    image: nedac/sylius_barcode_search_plugin_php:latest
+    environment:
+      - APP_ENV=test
+      - DATABASE_URL=mysql://sylius:barcodes@127.0.0.1:3306/sylius_barcodes
+    volumes:
+      - .:/srv/sylius
+    network_mode: host
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=sylius_barcodes
+      - MYSQL_USER=sylius
+      - MYSQL_PASSWORD=barcodes
+    ports:
+      - "3306:3306"
+    network_mode: host
+
+  nginx:
+    build:
+      context: .
+      target: sylius_barcode_search_plugin_nginx
+    image: nedac/sylius_barcode_search_plugin_nginx:latest
+    volumes:
+      - .:/srv/sylius
+    ports:
+      - "80:80"
+    network_mode: host
+
+  nodejs:
+    build:
+      context: .
+      target: sylius_barcode_search_plugin_nodejs
+    image: nedac/sylius_barcode_search_plugin_nodejs:latest
+    environment:
+      - GULP_ENV=dev
+      - PHP_HOST=127.0.0.1
+      - PHP_PORT=9000
+    volumes:
+      - .:/srv/sylius
+    network_mode: host
+
+  chrome:
+    image: selenium/standalone-chrome-debug:latest
+    volumes:
+      - /dev/shm:/dev/shm
+      - ./tests/Resources/video:/video
+    ports:
+      - "5900:5900"
+    network_mode: host

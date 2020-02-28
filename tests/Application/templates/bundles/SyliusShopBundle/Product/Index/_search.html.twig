@@ -1,0 +1,36 @@
+<div class="ui segment">
+    <form method="get" action="{{ path('sylius_shop_product_index', {'slug': app.request.attributes.get('slug')}) }}" class="ui loadable form" id="nedac-sylius-barcode-search-plugin-search-form">
+        <div class="ui stackable grid" id="searchbar">
+            <div class="column" id="searchbarTextField">
+                {% for filter in products.definition.enabledFilters %}
+                    {{ sylius_grid_render_filter(products, filter) }}
+                {% endfor %}
+            </div>
+            <div class="right aligned column" id="searchbarButtons">
+                <div class="ui buttons">
+                    <button type="submit" class="ui primary icon labeled button"><i class="search icon"></i> {{ 'sylius.ui.search'|trans }}</button>
+                    <a href="#" class="ui primary icon labeled button" id="nedac-sylius-barcode-search-plugin-start-button">
+                        <i class="barcode icon"></i> EAN
+                    </a>
+                    <a href="{{ path('sylius_shop_product_index', {'slug': app.request.attributes.get('slug')}) }}" class="ui negative icon labeled button">
+                        <i class="cancel icon"></i> {{ 'sylius.ui.clear'|trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="ui modal" id="nedac-sylius-barcode-plugin-scan-modal">
+    <i class="close icon" id="nedac-sylius-barcode-plugin-scan-modal-close-button"></i>
+    <div class="header">
+        Scan barcode
+    </div>
+    <div class="nedac-sylius-barcode-plugin-viewport-container">
+        <div id="nedac-sylius-barcode-plugin-interactive" class="viewport"></div>
+    </div>
+    <div class="actions">
+        <div class="ui black deny button" id="nedac-sylius-barcode-plugin-scan-modal-stop-button">
+            Stop
+        </div>
+    </div>
+</div>

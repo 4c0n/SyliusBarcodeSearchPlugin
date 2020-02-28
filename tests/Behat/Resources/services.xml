@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="nedac.sylius_barcode_search_plugin.behat.page.product_index"
+                 class="Tests\Nedac\SyliusBarcodeSearchPlugin\Behat\Page\Shop\Product\IndexPage"
+                 parent="sylius.behat.symfony_page"
+                 public="false" />
+
+        <service id="nedac.sylius_barcode_search_plugin.behat.context.product_context"
+                 class="Tests\Nedac\SyliusBarcodeSearchPlugin\Behat\Context\Ui\Shop\ProductContext">
+            <argument type="service" id="nedac.sylius_barcode_search_plugin.behat.page.product_index" />
+        </service>
+    </services>
+</container>
