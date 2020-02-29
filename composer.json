@@ -1,5 +1,5 @@
 {
-    "name": "4c0n/sylius-barcode-search",
+    "name": "4c0n/sylius-barcode-search-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin", "barcode", "bar", "code", "ean"],
     "description": "Plugin that makes it possible for users to use their camera to search for a barcode.",
