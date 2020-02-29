@@ -58,7 +58,7 @@ before_script:
   - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
 
   # Run webserver
-  - (cd tests/Application && sudo bin/console server:run 127.0.0.1:80 --quiet > /dev/null 2>&1 &)
+  - (cd tests/Application && sudo bin/console server:run 127.0.0.1:80 &)
 
 script:
   - composer validate
@@ -71,4 +71,6 @@ after_failure:
 
 services:
   - mysql
-  - xvfb
+
+addons:
+  chrome: stable
