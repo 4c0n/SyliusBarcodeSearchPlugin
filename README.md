@@ -23,7 +23,7 @@ vendor/bin/behat
 
 1. Install using composer:
     ```bash
-    composer require nedac/sylius-barcode-search-plugin
+    composer require 4c0n/sylius-barcode-search
     ```
 2. Override template:
     ```twig
