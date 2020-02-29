@@ -25,7 +25,17 @@ vendor/bin/behat
     ```bash
     composer require 4c0n/sylius-barcode-search-plugin
     ```
-2. Override template:
+2. Add bundle to bundles.php
+    ```php
+    # config/bundles.php
+    <?php
+
+    return [
+        ...
+        Nedac\SyliusBarcodeSearchPlugin\NedacSyliusBarcodeSearchPlugin::class => ['all' => true],
+    ];
+    ```
+3. Override template:
     ```twig
     {# templates/bundles/SyliusShopBundle/Product/Index/_search.html.twig #}
     <div class="ui segment">
@@ -63,9 +73,9 @@ vendor/bin/behat
         </div>
     </div>
     ```
-3. Install assets:
+4. Install assets:
     ```bash
    bin/console sylius:install:assets
     ```
-Just three steps!
+Just four steps!
 Now it's up to you to configure the product grid in such a way that a field containing the EAN is being filtered.
