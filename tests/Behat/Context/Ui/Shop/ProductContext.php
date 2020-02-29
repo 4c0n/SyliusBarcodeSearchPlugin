@@ -22,6 +22,6 @@ final class ProductContext implements Context
     public function iScanABarcodeUsingTheCameraOnMyDevice(): void
     {
         $this->indexPage->scanBarcode();
-        sleep(1);
+        sleep(5);
     }
 }
