@@ -68,3 +68,6 @@ script:
 
 after_failure:
   - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
+
+services:
+  - mysql
