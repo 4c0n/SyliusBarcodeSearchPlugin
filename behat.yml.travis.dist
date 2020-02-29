@@ -34,7 +34,7 @@ default:
                                     - "disable-gpu"
                                     - "use-fake-ui-for-media-stream"
                                     - "use-fake-device-for-media-stream"
-                                    - "use-file-for-fake-video-capture=/home/travis/4c0n/SyliusBarcodeSearchPlugin/tests/Resources/video/barcode.y4m"
+                                    - "use-file-for-fake-video-capture=/home/travis/build/4c0n/SyliusBarcodeSearchPlugin/tests/Resources/video/barcode.y4m"
                             extra_capabilities:
                                 unexpectedAlertBehaviour: accept
                 firefox:
