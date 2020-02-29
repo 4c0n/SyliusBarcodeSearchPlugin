@@ -59,6 +59,7 @@ before_script:
 
   # Run webserver
   - (cd tests/Application && bin/console server:run 127.0.0.1:8080 > ../../$SYLIUS_BUILD_DIR/symfony.log 2>&1 &)
+  - cp behat.yml.travis.dist behat.yml
 
 script:
   - composer validate
