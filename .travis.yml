@@ -46,7 +46,7 @@ before_script:
         mv chromedriver $SYLIUS_CACHE_DIR
     fi
   # Run ChromeDriver
-  - $SYLIUS_CACHE_DIR/chromedriver > /dev/null 2>&1 &
+  - $SYLIUS_CACHE_DIR/chromedriver > $SYLIUS_BUILD_DIR/chromedriver.log 2>&1 &
 
   # Download and configure Selenium
   - |
@@ -55,10 +55,10 @@ before_script:
         mv selenium.jar $SYLIUS_CACHE_DIR
     fi
   # Run Selenium
-  - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > /dev/null 2>&1 &
+  - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > $SYLIUS_BUILD_DIR/selenium.log 2>&1 &
 
   # Run webserver
-  - (cd tests/Application && sudo bin/console server:run 127.0.0.1:80 > ${SYLIUS_BUILD_DIR}/symfony.log 2>&1 &)
+  - (cd tests/Application && sudo bin/console server:run 127.0.0.1:80 > $SYLIUS_BUILD_DIR/symfony.log 2>&1 &)
 
 script:
   - composer validate
@@ -67,6 +67,7 @@ script:
   - vendor/bin/behat --strict -vvv --no-interaction || vendor/bin/behat --strict -vvv --no-interaction --rerun
 
 after_failure:
+  - ls -lah ${SYLIUS_BUILD_DIR}
   - vendor/lakion/mink-debug-extension/travis/tools/upload-textfiles "${SYLIUS_BUILD_DIR}/*.log"
 
 services:
