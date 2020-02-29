@@ -32,7 +32,7 @@ services:
     volumes:
       - .:/srv/sylius
     ports:
-      - "80:80"
+      - "8080:8080"
     network_mode: host
 
   nodejs:

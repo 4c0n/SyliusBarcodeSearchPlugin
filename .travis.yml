@@ -58,9 +58,7 @@ before_script:
   - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > $SYLIUS_BUILD_DIR/selenium.log 2>&1 &
 
   # Run webserver
-  - sudo export PATH=$PATH:/home/travis/.phpenv/shims/
-  - sudo echo $PATH
-  - (cd tests/Application && sudo bin/console server:run 127.0.0.1:80 > ../../$SYLIUS_BUILD_DIR/symfony.log 2>&1 &)
+  - (cd tests/Application && bin/console server:run 127.0.0.1:8080 > ../../$SYLIUS_BUILD_DIR/symfony.log 2>&1 &)
 
 script:
   - composer validate
@@ -74,6 +72,3 @@ after_failure:
 
 services:
   - mysql
-
-#addons:
-#  chrome: stable
