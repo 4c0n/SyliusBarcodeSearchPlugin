@@ -58,6 +58,7 @@ before_script:
   - java -Dwebdriver.chrome.driver=$SYLIUS_CACHE_DIR/chromedriver -jar $SYLIUS_CACHE_DIR/selenium.jar > $SYLIUS_BUILD_DIR/selenium.log 2>&1 &
 
   # Run webserver
+  - which php
   - (cd tests/Application && sudo bin/console server:run 127.0.0.1:80 > ../../$SYLIUS_BUILD_DIR/symfony.log 2>&1 &)
 
 script:
@@ -73,5 +74,5 @@ after_failure:
 services:
   - mysql
 
-addons:
-  chrome: stable
+#addons:
+#  chrome: stable
