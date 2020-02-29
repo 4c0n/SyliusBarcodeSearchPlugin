@@ -1,3 +1,5 @@
+<img src="https://travis-ci.com/4c0n/SyliusBarcodeSearchPlugin.svg?branch=master" alt="build:started">
+
 #### Setup development environment:
 ```bash
 docker-compose build
