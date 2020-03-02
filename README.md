@@ -61,7 +61,9 @@ However, it is possible to store the EAN in a product attribute and configure th
         <div class="header">
             Scan barcode
         </div>
-        <div id="interactive" class="viewport"></div>
+        <div class="nedac-sylius-barcode-plugin-viewport-container">
+            <div id="nedac-sylius-barcode-plugin-interactive" class="viewport"></div>
+        </div>
         <div class="actions">
             <div class="ui black deny button" id="nedac-sylius-barcode-plugin-scan-modal-stop-button">
                 Stop
