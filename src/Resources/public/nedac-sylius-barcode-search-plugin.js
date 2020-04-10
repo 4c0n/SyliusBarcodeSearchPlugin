@@ -49,6 +49,31 @@ if (nedacSyliusBarcodeSearchPluginStartButton !== null) {
           }
         });
 
+        // Register processed handler
+        Quagga.onProcessed(function(result) {
+          const overlayContext = Quagga.canvas.ctx.overlay;
+          const overlayCanvas = Quagga.canvas.dom.overlay;
+
+          if (result) {
+            if (result.boxes) {
+              overlayContext.clearRect(0, 0, parseInt(overlayCanvas.getAttribute('width')), parseInt(overlayCanvas.getAttribute('height')));
+              result.boxes.filter(function (box) {
+                return box !== result.box;
+              }).forEach(function (box) {
+                Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, overlayContext, {color: 'green', lineWidth: 2});
+              });
+            }
+
+            if (result.box) {
+              Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, overlayContext, {color: 'blue', lineWidth: 2});
+            }
+
+            if (result.codeResult && result.codeResult.code) {
+              Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, overlayContext, {color: 'red', lineWidth: 3});
+            }
+          }
+        });
+
         $('#nedac-sylius-barcode-plugin-scan-modal').modal('show');
         Quagga.start();
       }
