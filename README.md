@@ -15,6 +15,11 @@ However, it is possible to store the EAN in a product attribute and configure th
 
 ![Search result](search_result.png)
 
+##### Supported Sylius versions:
+<table>
+    <tr><td>1.6</td></tr>
+</table>
+
 #### Installation:
 
 1. Install using composer:
