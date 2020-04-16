@@ -1,0 +1,3 @@
+[submodule "tests/Application"]
+	path = tests/Application
+	url = git@github.com:4c0n/SyliusBarcodeSearchPluginTestApplication.git
