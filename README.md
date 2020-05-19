@@ -17,7 +17,7 @@ However, it is possible to store the EAN in a product attribute and configure th
 
 ##### Supported Sylius versions:
 <table>
-    <tr><td>1.6</td></tr>
+    <tr><td>1.6</td></tr><tr><td>1.7</td></tr>
 </table>
 
 #### Installation:
