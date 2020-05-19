@@ -19,13 +19,14 @@ env:
     - SYLIUS_CACHE_DIR=$HOME/.sylius-cache
     - SYLIUS_BUILD_DIR=etc/build
 
-before_install: &_before_install
+before_install:
   - sudo fallocate -l 4G /var/swap.1
   - sudo /sbin/mkswap /var/swap.1
   - sudo /sbin/swapon /var/swap.1
   - phpenv config-rm xdebug.ini
   - echo "memory_limit=4096M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - mkdir -p "${SYLIUS_CACHE_DIR}"
+  - [[ ! -z "$SYLIUS_VERSION" ]] && [[ "1.6" == "$SYLIUS_VERSION" ]] && composer require "sylius/sylius:>=1.6.8 <1.7.0" --no-update && (cd tests/Application && git checkout 1.6)
 
 install:
   - composer install --no-interaction --prefer-dist
@@ -70,10 +71,8 @@ jobs:
   include:
     - name: Sylius 1.7
     - name: Sylius 1.6
-      before_install:
-        - composer require "sylius/sylius:>=1.6.8 <1.7.0" --no-update
-        - (cd tests/Application && git checkout 1.6)
-        <<: *_before_install
+      env:
+        - SYLIUS_VERSION="1.6"
 
 script:
   - composer validate
