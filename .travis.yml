@@ -19,7 +19,7 @@ env:
     - SYLIUS_CACHE_DIR=$HOME/.sylius-cache
     - SYLIUS_BUILD_DIR=etc/build
 
-before_install:
+before_install: &_before_install
   - sudo fallocate -l 4G /var/swap.1
   - sudo /sbin/mkswap /var/swap.1
   - sudo /sbin/swapon /var/swap.1
@@ -73,6 +73,7 @@ jobs:
       before_install:
         - composer require "sylius/sylius:>=1.6.8 <1.7.0" --no-update
         - (cd tests/Application && git checkout 1.6)
+        - <<: *_before_install
 
 script:
   - composer validate
