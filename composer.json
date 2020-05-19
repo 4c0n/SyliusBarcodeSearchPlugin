@@ -31,6 +31,13 @@
         "symfony/web-server-bundle": "^4.4",
         "squizlabs/php_codesniffer": "^3.5"
     },
+    "conflict": {
+        "doctrine/inflector": "^1.4",
+        "sylius/grid-bundle": "1.7.4",
+        "symfony/symfony": "3.4.7",
+        "twig/twig": "2.6.1",
+        "api-platform/core": "2.5.5"
+    },
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
