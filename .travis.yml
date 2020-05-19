@@ -61,6 +61,13 @@ before_script:
   - (cd tests/Application && bin/console server:run 127.0.0.1:8080 > ../../$SYLIUS_BUILD_DIR/symfony.log 2>&1 &)
   - cp behat.yml.travis.dist behat.yml
 
+jobs:
+  include:
+    - name: Sylius 1.6
+    - name: Sylius 1.7
+      before_script:
+        - (cd tests/Application && git checkout 1.7)
+
 script:
   - composer validate
   - vendor/bin/phpcs
