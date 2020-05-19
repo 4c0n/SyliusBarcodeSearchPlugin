@@ -73,7 +73,7 @@ jobs:
       before_install:
         - composer require "sylius/sylius:>=1.6.8 <1.7.0" --no-update
         - (cd tests/Application && git checkout 1.6)
-        - <<: *_before_install
+        <<: *_before_install
 
 script:
   - composer validate
