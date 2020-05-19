@@ -65,7 +65,7 @@ jobs:
   include:
     - name: Sylius 1.7
     - name: Sylius 1.6
-      before_script:
+      before_install:
         - composer require "sylius/sylius:>=1.6.8 <1.7.0"
         - (cd tests/Application && git checkout 1.6)
 
